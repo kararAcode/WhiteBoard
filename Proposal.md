@@ -48,4 +48,4 @@ Our aim is to offer the best learning experiences for online studetns aka gettin
     - In the main page?
     - For students & teachers?
 
-- thing 2
+- Fansy animations
