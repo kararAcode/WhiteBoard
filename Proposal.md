@@ -1,6 +1,6 @@
 # Proposal
 
-Our aim is to offer the best learning experiences for online studetns aka getting rid of the archaic blackboard 
+Our aim is to offer the best learning experiences for online students, by getting rid of the archaic blackboard 
 
 ( ͡❛ ͜ʖ ͡❛)👌
 
@@ -10,7 +10,7 @@ Our aim is to offer the best learning experiences for online studetns aka gettin
 - Sign in/out
 
 - Display courses, course content (either videos, notes, texts, etc.) is shown beside the study video for students 
-    - Berief discription (overview) is given by the teacher, explain the contents in general
+    - Brief description (overview) is given by the teacher, explain the contents in general
     - A Q&A section is also provided for students to get in touch with their teachers
     - Practice questions section can also be found for the purposes of reviewing and practising
     - Grades
@@ -36,7 +36,7 @@ Our aim is to offer the best learning experiences for online studetns aka gettin
 
 - Showing students' grades (potentially?)
 
-- Gallery of students works
+- Gallery of students' works
     - easier to grade
 
 
@@ -48,4 +48,6 @@ Our aim is to offer the best learning experiences for online studetns aka gettin
     - In the main page?
     - For students & teachers?
 
-- Fansy animations
+- Fancy animations
+- A calculated average grade for the student in their class
+- A calculated grade based on the weight of each assignment & unit for the student
