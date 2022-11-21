@@ -11,4 +11,5 @@ app.get("/", (req, res) => {
 
 app.listen(8080, () => {
     console.log("Server Started");
+    console.log("Go to a browser and type: localhost:8080");
 });
