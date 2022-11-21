@@ -5,8 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheNewBoard</title>
+    <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
+
+    <div class="transition transition-1 is-active"></div>
+
+    <div class="page">
+        <header>
+            <img class="logo" src="images/logo.png" alt="logo">
+
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Thing 1</a></li>
+                    <li><a href="#">Thing 2</a></li>
+                    <li><a href="#">Thing 3</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="#"><button>Contacts</button></a>
+        </header>
+
+        <div class="auto-type">
+            <h1><span class="auto-type-text"></span></h1>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <script>
+        let typed = new Typed('.auto-type-text', {
+            strings: ['Live', 'Love', 'Laugh'],
+            typeSpeed: 150,
+            backSpeed: 150,
+            loop: true,
+        })
+
+        window.onload = () => {
+            const transitionElement = document.querySelector('.transition');
+            const anchors = document.querySelectorAll('a');
+
+            setTimeout(() => {
+                transitionElement.classList.remove('is-active') 
+            }, 500);
+
+            for (let i = 0; i < anchors.length; i++) {
+                const anchor = anchors[i];
+
+                anchor.addEventListener('click', e => {
+                    e.preventDefault();
+                    let target = e.target.href;
+
+                    transitionElement.classList.add('is-active');
+
+                    setTimeout(() => {
+                        window.location.href = target;
+                    }, 500);
+                })
+            }
+        }
+    </script>
     
 </body>
 </html>
