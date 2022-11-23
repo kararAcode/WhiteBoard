@@ -15,6 +15,11 @@ app.get("/", (req, res) => {
     res.render("main");
 });
 
+app.get("/calendar", (req, res) => {
+    res.render("calendar");
+});
+
+
 app.get("/login", (req, res) => {
    res.render("login"); 
 });
