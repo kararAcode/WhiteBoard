@@ -6,7 +6,6 @@ const flash = require('connect-flash');
 const router = require("./router");
 const mongoose = require("mongoose");
 
-
 require('dotenv').config();
 
 const User = require("./models/user.js");
