@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-
+const mongoose = require("mongoose");
 let courseSchema = new mongoose.Schema({
     teacher: {
         type: mongoose.Schema.Types.ObjectId,
@@ -12,4 +11,4 @@ let courseSchema = new mongoose.Schema({
     }]
 });
 
-module.exports = mongoose.Model("Course", courseSchema);
+module.exports = mongoose.model("Course", courseSchema);
