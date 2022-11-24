@@ -2,7 +2,7 @@
 
 Our aim is to offer the best learning experiences for online students, by getting rid of the archaic blackboard 
 
-( ͡❛ ͜ʖ ͡❛)👌
+(❛ ͜ʖ ͡❛)👌
 
 
 ## Need To Have List (Student Version)
