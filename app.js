@@ -38,6 +38,7 @@ passport.deserializeUser(User.deserializeUser());
 //implement all routes in router.js
 app.use(router);
 
+
 app.listen(8080, () => {
     console.log("Server Started");
     console.log("Go to a browser and type: localhost:8080");
