@@ -25,6 +25,10 @@ router.post('/login',
     }  
 );
 
+router.all("*", (req, res) => {
+    res.render("pageNotFound");
+});
+
 function isLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
