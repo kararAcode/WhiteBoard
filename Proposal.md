@@ -39,6 +39,7 @@ Our aim is to offer the best learning experiences for online students, by gettin
 - Gallery of students' works
     - easier to grade
 
+- Giving out announcements 
 
 
 
