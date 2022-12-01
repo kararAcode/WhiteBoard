@@ -15,16 +15,12 @@ Our aim is to offer the best learning experiences for online students, by gettin
     - Practice questions section can also be found for the purposes of reviewing and practising
     - Grades
 
-- (temporary group chat for group projects? Although most assignement would be worked on independently...)
-
 - Calendar
     - Due dates
-    - Important events
-    - Holidays & Shortened days
 
 - Announcements
-    - Teacher uploading new materials (red dot in the nav bar?)
-    - notifications?
+    - Teacher uploading new materials (red dot in the nav bar)
+    - notifications
 
 
 
@@ -34,10 +30,7 @@ Our aim is to offer the best learning experiences for online students, by gettin
     - videos or course contents
     - a form will pop up for simplicity while uploading
 
-- Showing students' grades (potentially?)
-
-- Gallery of students' works
-    - easier to grade
+- Showing students' overall grade
 
 - Giving out announcements 
 
@@ -45,10 +38,23 @@ Our aim is to offer the best learning experiences for online students, by gettin
 
 ## Nice To Have List
 
+- Built-in 'Zoom'
+
 - Forum
     - In the main page?
     - For students & teachers?
 
+- Gallery of students' works
+    - easier to grade
+    - grade book
+
 - Fancy animations
 - A calculated average grade for the student in their class
 - A calculated grade based on the weight of each assignment & unit for the student
+
+- (temporary group chat for group projects? Although most assignement would be worked on independently...)
+
+- Calendar 
+    - Important events
+    - Holidays & Shortened days
+
