@@ -17,5 +17,25 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.4"
-  }
+  },
+
+  "name": "The-New-Board",
+  "description": "Black Board Sucks",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "build": "tailwindcss -i ./public/stylesheets/src/main.css -o  ./public/stylesheets/output.css",
+    "watch": "tailwindcss -i ./public/stylesheets/src/main.css -o  ./public/stylesheets/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liiiiyuxuan/The-New-Board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liiiiyuxuan/The-New-Board/issues"
+  },
+  "homepage": "https://github.com/Liiiiyuxuan/The-New-Board#readme"
 }
