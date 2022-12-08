@@ -10,8 +10,6 @@ require('dotenv').config({ path: require('find-config')('.env') })
 
 const User = require("./models/user.js");
 
-console.log(process.env)
-
 mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
