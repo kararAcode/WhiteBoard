@@ -13,6 +13,10 @@ router.get("/calendar", (req, res) => {
     res.render("calendar"); 
 });
 
+router.get("/course", (req, res) => {
+    res.render("course"); 
+});
+
 
 router.get("/secret", isLoggedIn, (req, res) => {
     // a "secret page" is rendered and the name of the user is displayed when logged in
