@@ -2,9 +2,11 @@ body {
   background-color: #0b1120;
 }
 
-/*
-! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com
-*/
+/* @font-face {
+    font-family: "Permanent Marker"; src: url('PermanentMarker-Regular.ttf')
+} */
+
+/* ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com */
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
