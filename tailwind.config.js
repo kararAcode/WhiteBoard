@@ -15,6 +15,7 @@ module.exports = {
     colors: {
       aqua: "#389478",
       darkGrayishBlue: 'hsl(227, 12%, 61%)',
+      jetBlue: "#1A61BF"
     },
     
     extend: {},
