@@ -7,6 +7,11 @@ body {
 .nav-links {
     font-family: 'Open Sans', sans-serif;
 }
+/* @font-face {
+    font-family: "Permanent Marker"; src: url('PermanentMarker-Regular.ttf')
+} */
+
+@import url("course.css");
 
 @tailwind base;
 @tailwind components;
