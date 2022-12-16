@@ -780,3 +780,8 @@ video {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.active\:text-jetBlue:active {
+  --tw-text-opacity: 1;
+  color: rgb(26 97 191 / var(--tw-text-opacity));
+}
+
