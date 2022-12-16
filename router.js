@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-router.get("/", (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
     res.render("main");
 });
 
@@ -26,7 +26,7 @@ router.get("/secret", isLoggedIn, (req, res) => {
 router.post('/login', 
     passport.authenticate('local', {
       failureRedirect: "/login",
-      successRedirect: "/secret",
+      successRedirect: "/",
       failureFlash: true
     }),
     (req, res) => {
