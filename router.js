@@ -23,6 +23,23 @@ router.get("/secret", isLoggedIn, (req, res) => {
   	res.render("secret", {name: req.user.username});
 });
 
+router.get("/video", (req, res) => {
+    const path = '/assets/sample.mp4';
+    const stat = fs.startFileSync(path);
+    const fileSize = stat.size;
+    const range = req.headers.range;
+
+    if (range) {
+        const parts = range.replace(/bytes=/, "").split("-");
+        const start = parseInt(parts[0], 10);
+        const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
+        
+        
+    }
+
+
+});
+
 router.post('/login', 
     passport.authenticate('local', {
       failureRedirect: "/login",
