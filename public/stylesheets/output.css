@@ -713,11 +713,6 @@ video {
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
-.bg-jetBlue {
-  --tw-bg-opacity: 1;
-  background-color: rgb(26 97 191 / var(--tw-bg-opacity));
-}
-
 .p-6 {
   padding: 1.5rem;
 }
