@@ -1,4 +1,5 @@
 const date = new Date();
+const monthDays = document.querySelector(".days");
 
 const renderCalendar = () => {
   date.setDate(1);
@@ -72,29 +73,35 @@ renderCalendar();
 let dayArray = document.querySelectorAll(".days > div");
 for (let day of dayArray) {
   day.addEventListener('click', () => {
+
+    // for (let otherDay of dayArray) {
+    //   if (otherDay != day) {
+    //     let days = "";
+    //     days = otherDay;
+    //     monthDays.innerHTML = days;
+    //   }
+    // }
+
     popUpWin(day);
+
   });
 }
 
 function popUpWin(day) {
   const theDate = day.innerHTML;
-  day.innerHTML = `<div class="space-x-6">
-                   <div class="menu hidden absolute right-0 divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                       <div class="py-1" role="none">
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Edit</a>
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Duplicate</a>
-                       </div>
-                       <div class="py-1" role="none">
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Archive</a>
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Move</a>
-                       </div>
-                       <div class="py-1" role="none">
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-4">Share</a>
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-5">Add to favorites</a>
-                       </div>
-                       <div class="py-1" role="none">
-                           <a href="#" class="text-red-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-6">Delete</a>
-                       </div>
-                   </div>
-                   </div>`
+  day.innerHTML = `
+                  <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Password requirements:</h2>
+                  <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400">
+                      <li>
+                          At least 10 characters (and up to 100 characters)
+                      </li>
+                      <li>
+                          At least one lowercase character
+                      </li>
+                      <li>
+                          Inclusion of at least one special character, e.g., ! @ # ?
+                      </li>
+                  </ul>   
+                  `
 }
+
