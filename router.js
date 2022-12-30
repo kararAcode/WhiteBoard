@@ -1,9 +1,17 @@
 const router = require("express").Router();
 const passport = require("passport");
+const User = require("./models/user");
+const Course = require("./models/course")
 const fs = require("fs");
 
-router.get("/", isLoggedIn, (req, res) => {
-    res.render("main");
+router.get("/", isLoggedIn, async (req, res) => {
+    let user = await User.findById(req.user._id)
+        .populate({
+            path: "courses"
+        })
+        
+
+    res.render("main", {user});
 });
 
 router.get("/login", (req, res) => {
