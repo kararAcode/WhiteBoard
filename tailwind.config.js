@@ -3,7 +3,6 @@ module.exports = {
   content: [
     "./views/*.ejs"
   ],
-  darkMode: "class",
   theme: {
     screens: {
       sm: '480px',

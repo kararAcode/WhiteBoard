@@ -13,6 +13,12 @@ body {
 
 @import url("course.css");
 
+img {
+    width: 100%;
+    max-height: 20rem;
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
