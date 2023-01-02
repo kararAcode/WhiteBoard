@@ -14,6 +14,10 @@ router.get("/", isLoggedIn, async (req, res) => {
     res.render("main", {user});
 });
 
+router.get("/courses", isLoggedIn, (req, res) => {
+    res.redirect("/");
+})
+
 router.get("/login", (req, res) => {
     res.render("login"); 
 });
