@@ -77,6 +77,8 @@ router.get("/video", (req, res) => {
 
 });
 
+
+
 router.post('/login', 
     passport.authenticate('local', {
       failureRedirect: "/login",
@@ -87,6 +89,16 @@ router.post('/login',
       console.log(req.user);
     }  
 );
+
+
+router.post('/logout',  (req, res) => {
+    req.logOut((err) => {
+        if (err) {
+            console.log(err);
+        }
+    })
+    res.redirect("/");
+});
 
 router.all("*", (req, res) => {
     res.render("pageNotFound");
