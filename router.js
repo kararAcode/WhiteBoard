@@ -8,8 +8,8 @@ const {Readable, ReadableOptions} = require("stream");
 const { S3 } = require("aws-sdk");
 
 AWS.config.update({
-    accessKeyId: "AKIA52S6B5J44LS4VTBZ",
-    secretAccessKey: "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"
+    accessKeyId: process.env.accesskey,
+    secretAccessKey: process.env.secretAccessKey,
 });
 
 const s3 = new AWS.S3({
