@@ -1,8 +1,20 @@
 const router = require("express").Router();
 const passport = require("passport");
 const User = require("./models/user");
-const Course = require("./models/course")
+const Course = require("./models/course");
+const AWS = require("aws-sdk");
 const fs = require("fs");
+const {Readable, ReadableOptions} = require("stream");
+const { S3 } = require("aws-sdk");
+
+AWS.config.update({
+    accessKeyId: "AKIA52S6B5J44LS4VTBZ",
+    secretAccessKey: "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"
+});
+
+const s3 = new AWS.S3({
+    region: "us-west-2"
+});
 
 router.get("/", isLoggedIn, async (req, res) => {
     let user = await User.findById(req.user._id)
@@ -40,7 +52,7 @@ router.get("/actualVideo", (req, res) => {
     res.render("video")
 });
 
-router.get("/video", (req, res) => {
+router.get("/video", async (req, res) => {
     const path = 'public/assets/sample.mp4';
     const stat = fs.statSync(path);
     const fileSize = stat.size;
@@ -52,7 +64,14 @@ router.get("/video", (req, res) => {
         const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
         const chunksize = (end-start) + 1;
 
-        const file  = fs.createReadStream(path, {start, end});
+
+        // const file  = fs.createReadStream(path, {start, end});
+
+        const file = await s3.getObject({
+            Bucket: "thewhiteboardbucket",
+            Key: "sample.mp4"
+        }).createReadStream({start, end});
+
         const head = { 
             'Content-Range': `bytes ${start}-${end}/${fileSize}`,
             'Accept-Ranges': 'bytes',
@@ -71,7 +90,10 @@ router.get("/video", (req, res) => {
         };
 
         res.writeHead(200, head);
-        fs.createReadStream(path).pipe(res);
+        s3.getObject({
+            Bucket: "thewhiteboardbucket",
+            Key: "sample.mp4"
+        }).createReadStream().pipe(res);
     }
 
 
@@ -112,10 +134,12 @@ function isLoggedIn(req, res, next) {
 
     next();
 }
+
 function getDirectories(path) {
     return fs.readdirSync(path).filter(function (file) {
       return fs.statSync(path+'/'+file).isDirectory();
     });
-  }
+}
+
 
 module.exports = router;
