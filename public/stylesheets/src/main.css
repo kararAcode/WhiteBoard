@@ -1,6 +1,6 @@
-body {
-    /* background-color: #f5f5f5; */
-}
+/* body {
+    background-color: #f5f5f5;
+}  */
 
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&family=Open+Sans&display=swap');
 
@@ -12,6 +12,33 @@ body {
 } */
 
 @import url("course.css");
+
+img {
+    width: 100%;
+    min-height: 20rem;
+    max-height: 20rem;
+}
+
+::-webkit-scrollbar {
+    width: 18px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(5,48,105, 0.5);
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+    
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+
 
 @tailwind base;
 @tailwind components;
