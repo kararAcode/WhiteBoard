@@ -7,6 +7,9 @@ const fs = require("fs");
 const {Readable, ReadableOptions} = require("stream");
 const { S3 } = require("aws-sdk");
 
+require('dotenv').config({ path: require('find-config')('.env') })
+
+
 AWS.config.update({
     accessKeyId: process.env.accesskey,
     secretAccessKey: process.env.secretAccessKey,
@@ -17,6 +20,10 @@ const s3 = new AWS.S3({
 });
 
 router.get("/", isLoggedIn, async (req, res) => {
+    res.redirect("/courses");
+});
+
+router.get("/courses", isLoggedIn, async (req, res) => {
     let user = await User.findById(req.user._id)
         .populate({
             path: "courses"
@@ -24,11 +31,35 @@ router.get("/", isLoggedIn, async (req, res) => {
         
 
     res.render("main", {user});
+
 });
 
-router.get("/courses", isLoggedIn, (req, res) => {
-    res.redirect("/");
-})
+router.get("/courses/:id", isLoggedIn, async (req, res) => {
+
+    try {
+        let course = await Course.findById(req.params.id);
+
+        
+
+        res.render("course", {course});
+        
+
+        
+
+
+
+    }
+
+    catch (err) {
+        if (err.name === "CastError") {
+            res.render("pageNotFound");
+
+        }
+    }
+
+
+
+});
 
 router.get("/login", (req, res) => {
     res.render("login"); 
@@ -98,6 +129,7 @@ router.get("/video", async (req, res) => {
 
 
 });
+
 
 
 
