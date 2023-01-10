@@ -1,4 +1,5 @@
 const date = new Date();
+const monthDays = document.querySelector(".days");
 
 const renderCalendar = () => {
   date.setDate(1);
@@ -66,3 +67,41 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 renderCalendar();
+
+
+
+let dayArray = document.querySelectorAll(".days > div");
+for (let day of dayArray) {
+  day.addEventListener('click', () => {
+
+    // for (let otherDay of dayArray) {
+    //   if (otherDay != day) {
+    //     let days = "";
+    //     days = otherDay;
+    //     monthDays.innerHTML = days;
+    //   }
+    // }
+
+    popUpWin(day);
+
+  });
+}
+
+function popUpWin(day) {
+  const theDate = day.innerHTML;
+  day.innerHTML = `
+                  <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Password requirements:</h2>
+                  <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400">
+                      <li>
+                          At least 10 characters (and up to 100 characters)
+                      </li>
+                      <li>
+                          At least one lowercase character
+                      </li>
+                      <li>
+                          Inclusion of at least one special character, e.g., ! @ # ?
+                      </li>
+                  </ul>   
+                  `
+}
+
