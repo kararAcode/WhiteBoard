@@ -38,16 +38,8 @@ router.get("/courses/:id", isLoggedIn, async (req, res) => {
 
     try {
         let course = await Course.findById(req.params.id);
-
-        
-
         res.render("course", {course});
         
-
-        
-
-
-
     }
 
     catch (err) {
