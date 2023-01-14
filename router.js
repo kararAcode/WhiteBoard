@@ -27,7 +27,7 @@ router.get("/courses", isLoggedIn, async (req, res) => {
     let user = await User.findById(req.user._id)
         .populate({
             path: "courses"
-        })
+        });
         
 
     res.render("main", {user});
@@ -73,12 +73,6 @@ router.get("/course", (req, res) => {
     res.render("course"); 
 });
 
-
-router.get("/secret", isLoggedIn, (req, res) => {
-    // a "secret page" is rendered and the name of the user is displayed when logged in
-  	res.render("secret", {name: req.user.username});
-});
-
 router.get("/actualVideo", (req, res) => {
     res.render("video")
 });
@@ -86,7 +80,7 @@ router.get("/actualVideo", (req, res) => {
 router.get("/video", async (req, res) => {
     const path = 'public/assets/sample.mp4';
     const stat = fs.statSync(path);
-    const fileSize = stat.size;
+    let fileSize = await sizeOf('sample.mp4', 'thewhiteboardbucket');
     const range = req.headers.range;
 
     if (range) {
@@ -172,6 +166,16 @@ function getDirectories(path) {
       return fs.statSync(path+'/'+file).isDirectory();
     });
 }
+function sizeOf(key, bucket) {
+    return s3.headObject({ Key: key, Bucket: bucket })
+        .promise()
+        .then(res => res.ContentLength);
+}
+
+
+// A test
+
+
 
 
 module.exports = router;
