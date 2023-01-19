@@ -10,10 +10,10 @@ require('dotenv').config({ path: require('find-config')('.env') })
 
 const User = require("./models/user.js");
 
-mongoose.connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// mongoose.connect(process.env.DB_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
 
 // general app config
 app.set("view engine", "ejs");

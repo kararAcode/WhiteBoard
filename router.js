@@ -144,8 +144,10 @@ router.all("*", (req, res) => {
     res.render("pageNotFound");
 });
 
+const noLogIn = true;
+
 function isLoggedIn(req, res, next) {
-    if (!req.isAuthenticated()) {
+    if (!req.isAuthenticated() && !noLogIn) {
         req.session.returnTo = req.originalUrl;
         return res.redirect("/login");
     }
