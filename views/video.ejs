@@ -10,70 +10,95 @@
     <title>Document</title>
 </head>
 <body class="dark:bg-darkBg1 dark:text-white">
-
-    <div class="container">
-        <video id="videoPlayer" autoplay controls>
-            <source src="/assets/sample.mp4" type="video/mp4">
     
-        </video>
+    <div class="container w-full flex">
+        <div class="videoContainer">
+            <video id="videoPlayer" autoplay controls>
+                <source src="/assets/sample.mp4" type="video/mp4">
+        
+            </video>
+        
+            <div id="videoControls">
+                <div class="video-progress">
+                    <div class="w-full bg-gray-200 rounded-sm h-2.5 mb-4 dark:bg-gray-700">
+                        <div  id="progress-bar" class="bg-jetBlue h-2.5 rounded-sm dark:bg-blue-500" style="">
     
-        <div id="videoControls">
-            <div class="video-progress">
-                <div class="w-full bg-gray-200 rounded-sm h-2.5 mb-4 dark:bg-gray-700">
-                    <div  id="progress-bar" class="bg-jetBlue h-2.5 rounded-sm dark:bg-blue-500" style="">
-
+                        </div>
+                        <input id="timeseek" value="0" min="0" type="range" step="1">
+    
+    
+                    </div>   
+                    <!-- <div class="timeseek-popup">00:00</div> -->
+                </div>
+                <div class="controls px-6">
+    
+                    <div class="flex space-x-12 w-full">
+                        <button id="playback-icons">
+                            <i class="fa-solid fa-play text-2xl"></i>
+                            <i class="fa-solid fa-pause text-2xl hidden"></i>
+                        </button>
+                
+                        <div class="time">
+                            <time class="time-elapsed">00:00</time>
+                            <span>/</span>
+                            <time class="video-duration">00:00</time>
+                        </div>
+                
+                       
+                
+                        <div class="volume-controls">
+                            <input id="volume" orient="vertical" class="volume hidden hover:flex" value="1" type="range" max="1" min="0" step="0.01">
+    
+                            <button class="volume-btn">
+    
+                                <i class="fa-solid fa-volume-low text-lg hidden"></i>
+                                <i class="fa-solid fa-volume-xmark text-lg hidden"></i>
+                                <i class="fa-solid fa-volume-high text-lg"></i>
+                
+                            </button>
+                        </div>
                     </div>
-                    <input id="timeseek" value="0" min="0" type="range" step="1">
-
-
-                </div>   
-                <!-- <div class="timeseek-popup">00:00</div> -->
-            </div>
-            <div class="controls px-6">
-
-                <div class="flex space-x-12 w-full">
-                    <button id="playback-icons">
-                        <i class="fa-solid fa-play text-2xl"></i>
-                        <i class="fa-solid fa-pause text-2xl hidden"></i>
+                    
+                    
+    
+                    <button class="justify-self-end text-lg fullscreenBtns">
+                        <i class="fa-solid fa-expand"></i>
+                        <i class="fa-solid fa-compress hidden"></i>
+    
                     </button>
             
-                    <div class="time">
-                        <time class="time-elapsed">00:00</time>
-                        <span>/</span>
-                        <time class="video-duration">00:00</time>
-                    </div>
-            
-                   
-            
-                    <div class="volume-controls">
-                        <input id="volume" orient="vertical" class="volume hidden hover:flex" value="1" type="range" max="1" min="0" step="0.01">
-
-                        <button class="volume-btn">
-
-                            <i class="fa-solid fa-volume-low text-lg hidden"></i>
-                            <i class="fa-solid fa-volume-xmark text-lg hidden"></i>
-                            <i class="fa-solid fa-volume-high text-lg"></i>
-            
-                        </button>
-                    </div>
                 </div>
-                
-                
-
-                <button class="justify-self-end text-lg fullscreenBtns">
-                    <i class="fa-solid fa-expand"></i>
-                    <i class="fa-solid fa-compress hidden"></i>
-
-                </button>
+               
         
             </div>
-           
-    
+        </div>
+
+        <div class="flex flex-col max-h-screen overflow-y-auto">
+            <% for (let i = 0; i < 20; i++) {%>
+                <button id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="w-full border border-gray-700 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-32 py-4 text-center inline-flex items-center dark:bg-gray-800 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Section <%=i+1%>  <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                <!-- Dropdown menu -->
+                <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-full dark:bg-gray-700">
+                    <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
+                    
+                        
+                        <% for (let x=0; x < 10; x++) { %>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"></a>
+                            </li>
+                        <% } %>
+                            
+                            
+                    </ul>   
+                </div>
+            <% } %>
         </div>
     </div>
+    
 
    
 
     <script src="/scripts/video.js"></script>
+    <script src="/scripts/dropdown.js"></script>
+
 </body>
 </html>

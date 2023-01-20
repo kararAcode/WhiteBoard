@@ -10,7 +10,7 @@ const progressBar = document.querySelector("#progress-bar");
 const seek = document.querySelector("#timeseek");
 const seekPopup = document.querySelector(".timeseek-popup");
 const fullScreenIcons = document.querySelector(".fullscreenBtns");
-const container = document.querySelector(".container");
+const container = document.querySelector(".videoContainer");
 
 //volume controls
 const volumeBtn = document.querySelector(".volume-btn");
@@ -47,8 +47,6 @@ videoControls.addEventListener("mouseleave", hideVideoControls);
 video.addEventListener("mouseenter", showVideoControls);
 video.addEventListener("mouseleave", hideVideoControls);
 fullScreenIcons.addEventListener("click", toggleFullScreen);
-
-
 
 
 function changePlayButton() {
@@ -186,12 +184,18 @@ function toggleFullScreen() {
     for (child of fullScreenIcons.children) {
         child.classList.toggle("hidden");
     }
+
+    
     if (document.fullscreenElement) {
+        videoControls.style.bottom = "";
+
         document.exitFullscreen();
+
     }
 
     else {
         container.requestFullscreen();
+        videoControls.style.bottom = "1px";
     }
 }
 
