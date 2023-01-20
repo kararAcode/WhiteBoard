@@ -38,15 +38,8 @@ router.get("/courses/:id", isLoggedIn, async (req, res) => {
 
     try {
         let course = await Course.findById(req.params.id);
-
-        
-
         res.render("course", {course});
         
-
-        
-
-
 
     }
 
@@ -69,9 +62,6 @@ router.get("/calendar", (req, res) => {
     res.render("calendar"); 
 });
 
-router.get("/course", (req, res) => {
-    res.render("course"); 
-});
 
 router.get("/actualVideo", (req, res) => {
     res.render("video")
@@ -79,7 +69,6 @@ router.get("/actualVideo", (req, res) => {
 
 router.get("/video", async (req, res) => {
     const path = 'public/assets/sample.mp4';
-    const stat = fs.statSync(path);
     let fileSize = await sizeOf('sample.mp4', 'thewhiteboardbucket');
     const range = req.headers.range;
 
@@ -114,7 +103,7 @@ router.get("/video", async (req, res) => {
             'Content-Type': 'video/mp4'
         };
 
-        res.writeHead(200, head);
+        res.writeHead(206, head);
         s3.getObject({
             Bucket: "thewhiteboardbucket",
             Key: "sample.mp4"
@@ -173,7 +162,6 @@ function sizeOf(key, bucket) {
 }
 
 
-// A test
 
 
 
