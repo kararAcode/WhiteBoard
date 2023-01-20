@@ -23,22 +23,109 @@ img {
     width: 18px;
   }
   
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(5,48,105, 0.5);
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
-    
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
-  }
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: rgb(5,48,105, 0.5);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+  
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+} */
+
+
+
+.hidden::before, .hidden {
+  display: none  !important;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 60%;
+  /* height: max-content; */
+  justify-content: center;
+  align-items: center;
+}
+
+#video {
+  width: 10%;
+  /* height: 200px; */
+  border-radius: 20px;
+}
+
+#videoControls {
+
+  position: absolute;
+  display: flex;
+  bottom: 1px;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+#videoControls:hover {
+  opacity: 1;
+}
+
+
+.video-progress{
+  width: 100%;
+  /* position: absolute; */
+  bottom: 1.5rem;
+}
+
+#progress-bar {
+  position: absolute;
+}
+
+
+
+#timeseek {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  bottom: 75%;
+  position: absolute;
+}
+
+.controls {
+  /* position: absolute; */
+  display: flex;
+  width: 100%;
+  /* justify-content: space-around; */
+  align-items: center;
+  /* margin-bottom: 1%; */
+  
+}
+
+.volume-controls input {
+  -webkit-appearance: slider-vertical; /* Chromium */
+  /* display: none; */
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  bottom: 70px;
+  left: 11rem;
+}
 
 @tailwind base;
 @tailwind components;
