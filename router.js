@@ -19,6 +19,7 @@ const s3 = new AWS.S3({
     region: "us-west-2"
 });
 
+
 router.get("/", isLoggedIn, async (req, res) => {
     res.redirect("/courses");
 });
@@ -112,6 +113,10 @@ router.get("/video", async (req, res) => {
 
 
 });
+
+router.get("/youtube", (req, res) => {
+    res.render("youtube");
+})
 
 
 
