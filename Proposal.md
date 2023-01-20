@@ -18,13 +18,10 @@ Our aim is to offer the best learning experiences for online students, by gettin
 - Calendar
     - Due dates
 
-- Announcements
-    - Teacher uploading new materials (red dot in the nav bar)
-    - notifications
 
 
 
-## Need To Have List (Teacher Version)
+## Nice To Have List
 
 - Uploading section
     - videos or course contents
@@ -33,10 +30,6 @@ Our aim is to offer the best learning experiences for online students, by gettin
 - Showing students' overall grade
 
 - Giving out announcements 
-
-
-
-## Nice To Have List
 
 - Built-in 'Zoom'
 

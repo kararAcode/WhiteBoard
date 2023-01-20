@@ -19,6 +19,7 @@ const s3 = new AWS.S3({
     region: "us-west-2"
 });
 
+
 router.get("/", isLoggedIn, async (req, res) => {
     res.redirect("/courses");
 });
@@ -40,6 +41,7 @@ router.get("/courses/:id", isLoggedIn, async (req, res) => {
         let course = await Course.findById(req.params.id);
         res.render("course", {course});
         
+
     }
 
     catch (err) {
@@ -61,9 +63,6 @@ router.get("/calendar", (req, res) => {
     res.render("calendar"); 
 });
 
-router.get("/course", (req, res) => {
-    res.render("course"); 
-});
 
 router.get("/actualVideo", (req, res) => {
     res.render("video")
@@ -71,7 +70,6 @@ router.get("/actualVideo", (req, res) => {
 
 router.get("/video", async (req, res) => {
     const path = 'public/assets/sample.mp4';
-    const stat = fs.statSync(path);
     let fileSize = await sizeOf('sample.mp4', 'thewhiteboardbucket');
     const range = req.headers.range;
 
@@ -106,7 +104,7 @@ router.get("/video", async (req, res) => {
             'Content-Type': 'video/mp4'
         };
 
-        res.writeHead(200, head);
+        res.writeHead(206, head);
         s3.getObject({
             Bucket: "thewhiteboardbucket",
             Key: "sample.mp4"
@@ -115,6 +113,10 @@ router.get("/video", async (req, res) => {
 
 
 });
+
+router.get("/youtube", (req, res) => {
+    res.render("youtube");
+})
 
 
 
@@ -144,10 +146,8 @@ router.all("*", (req, res) => {
     res.render("pageNotFound");
 });
 
-const noLogIn = true;
-
 function isLoggedIn(req, res, next) {
-    if (!req.isAuthenticated() && !noLogIn) {
+    if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
         return res.redirect("/login");
     }
@@ -167,7 +167,6 @@ function sizeOf(key, bucket) {
 }
 
 
-// A test
 
 
 
