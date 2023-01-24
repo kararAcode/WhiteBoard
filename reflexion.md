@@ -24,8 +24,14 @@
 # Eason's reflexion
 
 ## Advice I would give myself when taking on a project like this going forward
+- Make the design at the start and then dive into the projects
+- Learn more about tailwind css
+- Think really carefully about we can achieve and what we might stuck on
 
 ## The hardest part of the project for me
+- There are two things:
+    - Tailwind css was a new thing to me, so it took me quite a while to figure out the installation of it and how to use it
+    - It also took me a while to figure out the connection between javascript and html, such as querySelector(), addEventListner(), and innerHTML
 
 
 # Aidan's reflexion
