@@ -1,6 +1,7 @@
 const video = document.querySelector("#videoPlayer");
 video.controls = false;
 
+// video elements
 const videoControls = document.querySelector(".container #videoControls")
 const icons = document.querySelectorAll("#playback-icons i");
 const playBtn = document.querySelector("#playback-icons");
@@ -21,14 +22,15 @@ const volumeHigh = document.querySelector(".volume-btn .fa-volume-high");
 const volume = document.querySelector("#volume");
 
 
-video.addEventListener("play", changePlayButton);
+// eventlisteners for video
+video.addEventListener("play", changePlayButton); // changes icon to play or pause depending on the video state
 video.addEventListener("pause", changePlayButton);
-playBtn.addEventListener("click", togglePlay)
-video.addEventListener("loadedmetadata", initVideo)
-video.addEventListener("timeupdate", updateTime);
+playBtn.addEventListener("click", togglePlay); // plays or pauses the video when btn is clicked
+video.addEventListener("loadedmetadata", initVideo); // waits until video is loaded to display video duration
+video.addEventListener("timeupdate", updateTime); 
 video.addEventListener("timeupdate", updateBar);
 seek.addEventListener("mousemove", updateSeekPopup);
-seek.addEventListener("input", skipAhead);
+seek.addEventListener("input", skipAhead); // if scroll input is moved, the current time will update
 volume.addEventListener("input", updateVolumeBar);
 volume.addEventListener("mouseover", showVolBar);
 volume.addEventListener("mouseleave", hideVolBar);
@@ -42,14 +44,16 @@ window.addEventListener("keypress", (e) => {
         togglePlay();
     }
 });
+//if you hover off the video controls or video, video controls will be hidden
 videoControls.addEventListener("mouseenter", showVideoControls);
 videoControls.addEventListener("mouseleave", hideVideoControls);
 video.addEventListener("mouseenter", showVideoControls);
 video.addEventListener("mouseleave", hideVideoControls);
-fullScreenIcons.addEventListener("click", toggleFullScreen);
+fullScreenIcons.addEventListener("click", toggleFullScreen); // toggle fullscreen when button is clicked
 
 
 function changePlayButton() {
+    // toggles icon apperances
     for (const icon of icons) {
         icon.classList.toggle("hidden");
     }
@@ -66,8 +70,10 @@ function togglePlay() {
 }
 
 function formatTime(t) {
-    const result = new Date(t * 1000).toISOString().substring(11, 19);
 
+    const result = new Date(t * 1000).toISOString().substring(11, 19); // re
+
+    // formats time and returns it as minutes and seconds
     return {
         minutes: result.substring(3, 5),
         seconds: result.substring(6, 8),
@@ -88,7 +94,7 @@ function initVideo() {
 
     const t = formatTime(videoDur);
 
-    videoDuration.innerHTML = `${t.minutes}:${t.seconds}`
+    videoDuration.innerHTML = `${t.minutes}:${t.seconds}`; // sets text to video duration
 }
 
 function updateBar() {
@@ -97,6 +103,8 @@ function updateBar() {
 }
 
 function updateSeekPopup(e) {
+    // this code is currently not being used in this instance of the project
+    // this is supposed to show a timestamp whenver you hover over a certain part of the video timeline
     const skip = Math.round((e.offsetX / e.target.clientWidth) * parseInt(e.target.getAttribute("max"), 10));
     seek.setAttribute("data-seek", skip);
     const time = formatTime(skip);
@@ -120,10 +128,12 @@ function updateVolumeBar() {
         video.muted =false;
     }
 
-    video.volume = volume.value;
+    video.volume = volume.value; // volume is set based on our range input
 }
 
 function updateVolIcon() {
+    // displays an icons based on the current volume
+
     volumeIcons.forEach((icon) => {
         icon.classList.add("hidden");
     });
@@ -147,6 +157,8 @@ function showVolBar() {
 }
 
 function hideVolBar() {
+    // a timer is used so the user can use the range input without it disappearing instantly
+    // usually it will disappear if you hover off the volume icon
     setTimeout(() => {
         volume.classList.add("hidden");
 
@@ -154,6 +166,9 @@ function hideVolBar() {
 }
 
 function toggleMute() {
+    // if it is muted it will switch to the volume it had before
+    // otherwise it will mute
+
     video.muted = !video.muted;
 
     if (video.muted) {
@@ -167,6 +182,7 @@ function toggleMute() {
 }
 
 function hideVideoControls() {
+    //
     if (video.paused) {
         return;
     } 

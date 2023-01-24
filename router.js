@@ -1,3 +1,6 @@
+
+// This file contains a bunch of get and post routes
+
 const router = require("express").Router();
 const passport = require("passport");
 const User = require("./models/user");
@@ -7,13 +10,16 @@ const fs = require("fs");
 const {Readable, ReadableOptions} = require("stream");
 const { S3 } = require("aws-sdk");
 
-require('dotenv').config({ path: require('find-config')('.env') })
+
+require('dotenv').config({ path: require('find-config')('.env') }); // enables the use of enviorment variable
 
 
+// uses s3 credintals to setup s3 client
 AWS.config.update({
     accessKeyId: process.env.accesskey,
     secretAccessKey: process.env.secretAccessKey,
 });
+
 
 const s3 = new AWS.S3({
     region: "us-west-2"
@@ -21,7 +27,7 @@ const s3 = new AWS.S3({
 
 
 router.get("/", isLoggedIn, async (req, res) => {
-    res.redirect("/courses");
+    res.redirect("/courses"); //redirects to courses as it is the main page
 });
 
 router.get("/courses", isLoggedIn, async (req, res) => {
@@ -29,22 +35,23 @@ router.get("/courses", isLoggedIn, async (req, res) => {
         .populate({
             path: "courses"
         });
-        
+        // the UserSchema store courses as ids
+        // in order to get the data that belongs to that course 
+        // we need to populate the array of ids
 
-    res.render("main", {user});
+    res.render("main", {user}); //i pass an object like this whenever i want to use data on frontend
 
 });
 
 router.get("/courses/:id", isLoggedIn, async (req, res) => {
 
     try {
-        let course = await Course.findById(req.params.id);
+        let course = await Course.findById(req.params.id); //finds course based on the id in the url
         res.render("course", {course});
-        
-
     }
 
     catch (err) {
+        // if a user enter an unknown course id they will see the 404 page
         if (err.name === "CastError") {
             res.render("pageNotFound");
 
@@ -53,6 +60,13 @@ router.get("/courses/:id", isLoggedIn, async (req, res) => {
 
 
 
+});
+
+router.post("/courses", async (req, res) => { 
+    let user = await User.findById(req.user._id);
+    user.addCourse(req.body.code);
+
+    res.redirect("courses");
 });
 
 router.get("/login", (req, res) => {
@@ -69,7 +83,6 @@ router.get("/actualVideo", (req, res) => {
 });
 
 router.get("/video", async (req, res) => {
-    const path = 'public/assets/sample.mp4';
     let fileSize = await sizeOf('sample.mp4', 'thewhiteboardbucket');
     const range = req.headers.range;
 
@@ -79,8 +92,6 @@ router.get("/video", async (req, res) => {
         const end = parts[1] ? parseInt(parts[1], 10) : fileSize-1;
         const chunksize = (end-start) + 1;
 
-
-        // const file  = fs.createReadStream(path, {start, end});
 
         const file = await s3.getObject({
             Bucket: "thewhiteboardbucket",
@@ -120,7 +131,6 @@ router.get("/youtube", (req, res) => {
 
 
 
-
 router.post('/login', 
     passport.authenticate('local', {
       failureRedirect: "/login",
@@ -130,6 +140,8 @@ router.post('/login',
     (req, res) => {
       console.log(req.user);
     }  
+
+    //code to autheniticate user
 );
 
 
@@ -140,27 +152,28 @@ router.post('/logout',  (req, res) => {
         }
     })
     res.redirect("/");
+
+    // logs user out and redirects to login page
 });
 
 router.all("*", (req, res) => {
+    // pageNotFound will be rendered the route has not been defined before
     res.render("pageNotFound");
 });
 
 function isLoggedIn(req, res, next) {
+    // middleware to check if you are logged in
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
         return res.redirect("/login");
     }
-
+    
     next();
 }
 
-function getDirectories(path) {
-    return fs.readdirSync(path).filter(function (file) {
-      return fs.statSync(path+'/'+file).isDirectory();
-    });
-}
+
 function sizeOf(key, bucket) {
+    // returns fileSize of file stored in s3 bucket
     return s3.headObject({ Key: key, Bucket: bucket })
         .promise()
         .then(res => res.ContentLength);

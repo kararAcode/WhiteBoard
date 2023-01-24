@@ -23,7 +23,7 @@ module.exports = {
       darkBg1: "#111827",
       darkGrayishBlue: 'hsl(227, 12%, 61%)',
       jetBlue: "#1A61BF",
-      white: "#fff",
+      white: colors.white,
       gray: colors.gray,
       blue: colors.blue,
       grayishBlack: "#7A7E86",
