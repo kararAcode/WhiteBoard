@@ -4,16 +4,22 @@
 - Our original needs to have was overambitious, especially when I (Aidan) was not able to run the database, so we adjusted it to be more resonable.
 
 ## Unsolved problems
-- I (Aidan) was not able to run the database on my school or home computer.
-    - School computer due to school restrictions.
-    - Home computer due to errors with mongo I could not solve in time.
+- Practice quizes, assignments and course notes
+- Course Q&A section
+- displaying list of course content on the side
+
 
 # Karar's reflexion
 
 ## Advice I would give myself when taking on a project like this going forward
+- Make more detailed plans before jumping into the code 
+- Make a detailed guide in the README.md on how install to the dependencies for the project and develop locally. This will make it easier for any contributers
+- Brush up on concepts that you seem to be weak at (css)
+- 
 
 ## The hardest part of the project for me
-
+- The most frustrationg thing was to get css to do what I wanted it to do. I had some troubles with flexbox
+- I also had difficulty when streaming the video from s3. The main issue I faced here was with js promises
 
 # Eason's reflexion
 
