@@ -125,12 +125,6 @@ router.get("/video", async (req, res) => {
 
 });
 
-router.get("/youtube", (req, res) => {
-    res.render("youtube");
-})
-
-
-
 router.post('/login', 
     passport.authenticate('local', {
       failureRedirect: "/login",
